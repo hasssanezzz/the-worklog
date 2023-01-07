@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.trns {
+  @apply transition-all duration-200;
+}
+
+.no-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
