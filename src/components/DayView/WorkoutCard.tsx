@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useSnapshot } from 'valtio'
 import { state } from '../../store'
 import { Workout } from '../../types'
@@ -23,7 +24,7 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
       <div className="flex items-start justify-between">
         <div>
           <p className="capitalize text-sm">{ex.category}</p>
-          <h2 className="text-2xl font-bold">{ex.name}</h2>
+          <Link to={`/exercise/${ex.id}`} className="text-2xl font-bold block">{ex.name}</Link>
           <small className="text-gray-400">
             {workout?.time?.toLocaleTimeString()}
           </small>
@@ -56,7 +57,12 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
         ))}
       </div>
 
-      <EditWorkoutModal workout={workout} active={isModalActive} setActive={setIsModalActive} />
+
+      <EditWorkoutModal
+        workout={workout}
+        active={isModalActive}
+        setActive={setIsModalActive}
+      />
     </div>
   )
 }

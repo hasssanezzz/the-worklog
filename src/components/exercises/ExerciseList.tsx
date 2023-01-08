@@ -1,4 +1,5 @@
-import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi2'
+import { HiOutlineTrash } from 'react-icons/hi2'
+import { Link } from 'react-router-dom'
 import { useSnapshot } from 'valtio'
 import { state } from '../../store'
 import { CATEGORIES, Exercise } from '../../types'
@@ -10,7 +11,7 @@ function ExerciseCard({ ex }: { ex: Exercise }) {
   }
 
   return (
-    <div className="px-5 py-3 shadow border rounded-xl">
+    <Link to={`/exercise/${ex.id}`} className="px-5 py-3 shadow border rounded-xl block">
       <div className="flex items-center justify-between gap-5">
         <div>
           <h2 className="font-bold text-xl">{ex.name}</h2>
@@ -26,7 +27,7 @@ function ExerciseCard({ ex }: { ex: Exercise }) {
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
