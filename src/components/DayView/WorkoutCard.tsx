@@ -7,7 +7,7 @@ import { HiOutlineTrash, HiOutlinePencil } from 'react-icons/hi2'
 import EditWorkoutModal from './EditWorkoutModal'
 
 export default function WorkoutCard({ w: workout }: { w: Workout }) {
-  const { exercises, workouts } = useSnapshot(state)
+  const { exercises } = useSnapshot(state)
   const [isModalActive, setIsModalActive] = useState(false)
 
   const ex = useMemo(() => {
@@ -16,7 +16,9 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
   }, [workout.exId])
 
   function handleDeleteClick() {
-    state.workouts = workouts.filter((w) => w.id !== workout.id) as Workout[]
+    state.workouts = state.workouts.filter(
+      (w) => w.id !== workout.id
+    ) as Workout[]
   }
 
   return (
@@ -24,7 +26,9 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
       <div className="flex items-start justify-between">
         <div>
           <p className="capitalize text-sm">{ex.category}</p>
-          <Link to={`/exercise/${ex.id}`} className="text-2xl font-bold block">{ex.name}</Link>
+          <Link to={`/exercise/${ex.id}`} className="text-2xl font-bold block">
+            {ex.name}
+          </Link>
           <small className="text-gray-400">
             {workout?.time?.toLocaleTimeString()}
           </small>
@@ -56,7 +60,6 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
           </div>
         ))}
       </div>
-
 
       <EditWorkoutModal
         workout={workout}

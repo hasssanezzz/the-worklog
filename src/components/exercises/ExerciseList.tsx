@@ -8,6 +8,7 @@ function ExerciseCard({ ex }: { ex: Exercise }) {
 
   function handleDeleteClick() {
     state.exercises = state.exercises.filter(e => e.id !== ex.id)
+    state.workouts = state.workouts.filter(w => w.exId !== ex.id)
   }
 
   return (
