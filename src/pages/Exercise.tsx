@@ -1,10 +1,12 @@
-import Chart from 'react-apexcharts'
 import { useSnapshot } from 'valtio'
 import { useParams, useNavigate } from 'react-router-dom'
 import Conatiner from '../components/containers/Container'
 import { state } from '../store'
 import { useEffect, useState } from 'react'
-import { Exercise } from '../types'
+import { Exercise, Workout } from '../types'
+import Graph from '../components/exercise/Graph'
+import Stats from '../components/exercise/Stats'
+import CountSetter from '../components/exercise/CountSetter'
 
 export default function ExerciseComponent() {
   const { exercises, workouts } = useSnapshot(state)
@@ -40,47 +42,19 @@ export default function ExerciseComponent() {
         <h2 className="text-4xl text-center font-bold">{ex.name}</h2>
       </div>
 
-      <h3 className="my-10">
-        Viewing the last{' '}
-        <strong>
-          {lastCount > slicedData.length ? slicedData.length : lastCount}
-        </strong>{' '}
-        workouts from <strong>{selectedWorkouts.length}</strong> workouts
-        <select
-          value={lastCount > slicedData.length ? slicedData.length : lastCount}
-          onChange={e => setLastCount(+e.target.value)}
-          className="w-full bg-gray-200 rounded-md px-3 py-2 mt-2"
-        >
-          {lastCount > slicedData.length ? <option value={slicedData.length}>{slicedData.length}</option> : ''}
-          {Array(10)
-            .fill(0)
-            .map((e, i) => (i+1) * 10)
-            .map((e) => (
-              <option key={e} disabled={e > slicedData.length}>{e}</option>
-            ))}
-        </select>
-      </h3>
+    <CountSetter 
+      dataLength={selectedWorkouts.length}
+      slicedDataLength={slicedData.length}
+      lastCount={lastCount}
+      setLastCount={setLastCount}
+    />
 
-      <Chart
-        options={{
-          theme: {},
-          colors: ['#000'],
-          chart: {
-            id: 'basic-bar',
-          },
-          xaxis: {
-            categories: slicedData.map((w) => w.date.toLocaleDateString()),
-          },
-        }}
-        series={[
-          {
-            name: 'Workouts',
-            data: slicedData.map((w) => Math.max(...w.weight)),
-          },
-        ]}
-        type={'bar'}
-        width={'100%'}
-      />
+      <h4 className="text-xl font-bold my-5">Graph:</h4>
+      <Graph data={slicedData as Workout[]} />
+
+      <h4 className="text-xl font-bold my-5">Stats:</h4>
+      <Stats data={slicedData as Workout[]} />
+
     </Conatiner>
   )
 }

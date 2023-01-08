@@ -1,4 +1,4 @@
-const CACHE_NAME = "v3"
+const CACHE_NAME = "v0.1"
 const assetsURLS = ["/", "/assets/index.css", "assets/index.js"]
 
 async function preCache() {
