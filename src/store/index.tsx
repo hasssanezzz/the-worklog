@@ -1,8 +1,9 @@
 import { proxy, subscribe } from 'valtio'
 import { datesOfweek, dateTimeReviver } from '../helpers'
-import { CATEGORIES, Exercise, Workout } from '../types'
+import { Exercise, Workout } from '../types'
 
 interface State {
+  dark: boolean
   selectedDate: Date
   week: Date[]
   exercises: Exercise[]
@@ -10,6 +11,7 @@ interface State {
 }
 
 const initState = {
+  dark: false,
   selectedDate: new Date(),
   week: datesOfweek(),
   exercises: [

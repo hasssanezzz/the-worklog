@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { HiOutlineTableCells } from 'react-icons/hi2'
+import { HiOutlineTableCells, HiCog } from 'react-icons/hi2'
 import Conatiner from './containers/Container'
 
 export default function Navbar() {
@@ -16,6 +16,12 @@ export default function Navbar() {
             className="bg-gray-200 p-1 rounded-md hover:bg-blue-500 hover:text-white trns"
           >
             <HiOutlineTableCells size={25} />
+          </Link>
+          <Link
+            to="/settings"
+            className="bg-gray-200 p-1 rounded-md hover:bg-blue-500 hover:text-white trns"
+          >
+            <HiCog size={25} />
           </Link>
         </div>
       </Conatiner>
