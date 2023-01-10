@@ -22,7 +22,7 @@ export default function CountSetter({
       <select
         value={lastCount > slicedDataLength ? slicedDataLength : lastCount}
         onChange={(e) => setLastCount(+e.target.value)}
-        className="w-full bg-gray-200 rounded-md px-3 py-2 mt-2"
+        className="w-full bg-gray-200 rounded-md px-3 py-2 mt-2 dark:bg-gray-800 outline-none focus:ring-1 ring-gray-700"
       >
         {lastCount > slicedDataLength ? (
           <option value={slicedDataLength}>{slicedDataLength}</option>

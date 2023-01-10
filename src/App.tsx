@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useSnapshot } from 'valtio'
 
@@ -12,17 +13,20 @@ import { state } from './store'
 export default function App() {
   const { dark } = useSnapshot(state)
 
+  useEffect(() => {
+    if (dark) document.querySelector('html')?.classList.add('dark')
+    else document.querySelector('html')?.classList.remove('dark')
+  }, [dark])
+
   return (
     <BrowserRouter>
-      <div className={dark ? 'dark' : ''}>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/exercises" element={<Exercises />} />
-          <Route path="/exercise/:id" element={<ExerciseComponent />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/exercises" element={<Exercises />} />
+        <Route path="/exercise/:id" element={<ExerciseComponent />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
     </BrowserRouter>
   )
 }

@@ -13,13 +13,13 @@ export default function Navbar() {
         <div className="space-x-3 flex">
           <Link
             to="/exercises"
-            className="bg-gray-200 p-1 rounded-md hover:bg-blue-500 hover:text-white trns"
+            className="bg-gray-200 dark:bg-gray-800 p-1 rounded-md hover:bg-blue-500 hover:text-white dark:hover:bg-gray-700 trns"
           >
             <HiOutlineTableCells size={25} />
           </Link>
           <Link
             to="/settings"
-            className="bg-gray-200 p-1 rounded-md hover:bg-blue-500 hover:text-white trns"
+            className="bg-gray-200 dark:bg-gray-800 p-1 rounded-md hover:bg-blue-500 hover:text-white dark:hover:bg-gray-700 trns"
           >
             <HiCog size={25} />
           </Link>

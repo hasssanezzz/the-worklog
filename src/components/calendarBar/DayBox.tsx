@@ -14,11 +14,11 @@ export default function DayBox({ date }: { date: Date }) {
       className={`group relative ${selectedWorkouts.length ? 'border-4' : 'border'} ${
         today.toLocaleDateString() === date.toLocaleDateString()
           ? 'border-4 border-blue-500'
-          : 'border-black'
+          : 'border-black dark:border-gray-700'
       }  ${
         selectedDate.toLocaleDateString() === date.toLocaleDateString()
-          ? 'bg-black text-white'
-          : 'hover:bg-gray-100'
+          ? 'dark:bg-gray-700 dark:text-white bg-black text-white'
+          : 'hover:bg-gray-100 dark:hover:bg-gray-800'
       } flex-auto h-[55px] flex-shrink-0 shadow rounded-xl flex items-center justify-center`}
     >
       <div className="flex flex-col">
@@ -29,7 +29,7 @@ export default function DayBox({ date }: { date: Date }) {
       </div>
 
       <div className="absolute top-[55px] flex items-center gap-1">
-        {selectedWorkouts.length ? <span className='text-[10px] font-bold text-black'>{selectedWorkouts.length}</span> : ''}
+        {selectedWorkouts.length ? <span className='text-[10px] font-bold'>{selectedWorkouts.length}</span> : ''}
       </div>
     </button>
   )

@@ -12,7 +12,7 @@ function ExerciseCard({ ex }: { ex: Exercise }) {
   }
 
   return (
-    <Link to={`/exercise/${ex.id}`} className="px-5 py-3 shadow border rounded-xl block">
+    <Link to={`/exercise/${ex.id}`} className="px-5 py-3 shadow dark:shadow-gray-800 border dark:border-gray-700 rounded-xl block">
       <div className="flex items-center justify-between gap-5">
         <div>
           <h2 className="font-bold text-xl">{ex.name}</h2>

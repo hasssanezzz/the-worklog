@@ -11,7 +11,7 @@ interface State {
 }
 
 const initState = {
-  dark: false,
+  dark: true,
   selectedDate: new Date(),
   week: datesOfweek(),
   exercises: [

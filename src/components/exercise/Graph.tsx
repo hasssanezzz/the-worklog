@@ -1,12 +1,15 @@
 import Chart from 'react-apexcharts'
+import { useSnapshot } from 'valtio'
+import { state } from '../../store'
 import { Workout } from '../../types'
 
 export default function Graph({ data }: { data: Workout[] }) {
+  const { dark } = useSnapshot(state)
   return (
     <Chart
       options={{
-        theme: {},
-        colors: ['#000'],
+        theme: { mode: dark ? 'dark' : 'light' },
+        colors: ['#0080ffdd'],
         chart: {
           id: 'basic-bar',
         },

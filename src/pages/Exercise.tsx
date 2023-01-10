@@ -42,19 +42,18 @@ export default function ExerciseComponent() {
         <h2 className="text-4xl text-center font-bold">{ex.name}</h2>
       </div>
 
-    <CountSetter 
-      dataLength={selectedWorkouts.length}
-      slicedDataLength={slicedData.length}
-      lastCount={lastCount}
-      setLastCount={setLastCount}
-    />
+      <CountSetter
+        dataLength={selectedWorkouts.length}
+        slicedDataLength={slicedData.length}
+        lastCount={lastCount}
+        setLastCount={setLastCount}
+      />
 
       <h4 className="text-xl font-bold my-5">Graph:</h4>
       <Graph data={slicedData as Workout[]} />
 
       <h4 className="text-xl font-bold my-5">Stats:</h4>
       <Stats data={slicedData as Workout[]} />
-
     </Conatiner>
   )
 }

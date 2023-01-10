@@ -22,7 +22,7 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
   }
 
   return (
-    <div className="p-5 border shadow rounded-xl bg-black text-white">
+    <div className="p-5 border dark:shadow rounded-xl bg-black text-white dark:bg-gray-800 dark:border-gray-600 shadow-gray-600">
       <div className="flex items-start justify-between">
         <div>
           <p className="capitalize text-sm">{ex.category}</p>
@@ -37,7 +37,7 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
         <div className="mt-2 flex items-center gap-2">
           <button
             onClick={() => setIsModalActive(true)}
-            className="p-1 hover:bg-gray-700 rounded-md"
+            className="p-1 hover:bg-gray-700 dark:hover:bg-gray-700 rounded-md"
           >
             <HiOutlinePencil size={20} />
           </button>
@@ -54,7 +54,7 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
         {workout.weight.map((set, index) => (
           <div
             key={index}
-            className="p-2 text-center bg-white rounded-2xl flex-auto text-black font-bold"
+            className="p-2 text-center bg-white rounded-2xl flex-auto text-black font-bold dark:bg-gray-900 dark:text-white dark:shadow dark:shadow-gray-700"
           >
             {set} {workout.unit} x {workout.reps}
           </div>

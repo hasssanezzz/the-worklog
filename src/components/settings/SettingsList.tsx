@@ -15,14 +15,14 @@ export default function SettingsList() {
     <div className="space-y-8">
       <main>
         <p className="font-bold mb-3">App data</p>
-        <div className="border-t border-b divide-y-[1px]">
-          <button className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 trns">
+        <div className="border-t border-b dark:border-gray-700 dark:divide-gray-700 divide-y-[1px]">
+          <button className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 dark:hover:bg-gray-800 trns">
             <span>
               <HiOutlineArrowDownOnSquareStack size={25} />
             </span>
             <span>Import data</span>
           </button>
-          <button className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 trns">
+          <button className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 dark:hover:bg-gray-800 trns">
             <span>
               <HiOutlineArrowTopRightOnSquare size={22} />
             </span>
@@ -33,8 +33,8 @@ export default function SettingsList() {
 
       <main>
         <p className="font-bold mb-3">Appearance</p>
-        <div className="border-t border-b divide-y-[1px]">
-          <div className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 trns justify-between">
+        <div className="border-t border-b dark:border-gray-700 dark:divide-gray-700 divide-y-[1px]">
+          <div className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 dark:hover:bg-gray-800 trns justify-between">
             <div className="flex items-center gap-3">
               <span>
                 <HiOutlineEye size={25} />
@@ -42,15 +42,18 @@ export default function SettingsList() {
               <span>Dark theme</span>
             </div>
 
-            <Checkbox checked={dark} setChecked={() => state.dark = !state.dark} />
+            <Checkbox
+              checked={dark}
+              setChecked={() => (state.dark = !state.dark)}
+            />
           </div>
         </div>
       </main>
 
       <main>
         <p className="font-bold mb-3">Version</p>
-        <div className="border-t border-b divide-y-[1px]">
-          <div className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 trns">
+        <div className="border-t border-b dark:border-gray-700 dark:divide-gray-700 divide-y-[1px]">
+          <div className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 dark:hover:bg-gray-800 trns">
             <span>
               <HiOutlineCheckBadge size={25} />
             </span>

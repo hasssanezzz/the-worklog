@@ -53,19 +53,19 @@ export default function WeekSliderFooter() {
 
   return (
     <div className="w-full flex items-center justify-between">
-      <button className="p-1 rounded-md hover:bg-gray-200" onClick={prevWeek}>
+      <button className="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800" onClick={prevWeek}>
         <HiOutlineChevronLeft size={25} />
       </button>
 
-      <button onClick={() => setIsModalActive(true)} className="rounded-md flex-auto mx-5 text-center bg-gray-900 hover:bg-gray-700 trns px-10 py-2 text-white text-sm flex items-center justify-center gap-1">
+      <button onClick={() => setIsModalActive(true)} className="rounded-md flex-auto mx-5 dark:bg-gray-800 dark:hover:bg-gray-700 text-center bg-gray-900 hover:bg-gray-700 trns px-10 py-2 text-white text-sm flex items-center justify-center gap-1">
         <HiOutlinePlusCircle size={20} /> workout
       </button>
 
       <div className="flex items-center gap-3">
-        <button className="p-1 rounded-md hover:bg-gray-200" onClick={currWeek}>
+        <button className="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800" onClick={currWeek}>
           <HiOutlineCalendar size={25} />
         </button>
-        <button className="p-1 rounded-md hover:bg-gray-200" onClick={nextWeek}>
+        <button className="p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800" onClick={nextWeek}>
           <HiOutlineChevronRight size={25} />
         </button>
       </div>

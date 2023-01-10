@@ -13,7 +13,7 @@ export default function Exercises() {
 
       <button
         onClick={() => setIsModalActive(true)}
-        className="rounded-md w-full text-center bg-gray-900 hover:bg-gray-700 trns px-10 py-2 text-white text-sm flex items-center justify-center gap-1 mb-5"
+        className="rounded-md w-full text-center bg-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-gray-700 trns px-10 py-2 text-white text-sm flex items-center justify-center gap-1 mb-5"
       >
         <HiOutlinePlusCircle size={20} /> Add exercise
       </button>
