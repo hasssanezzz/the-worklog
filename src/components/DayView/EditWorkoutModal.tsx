@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { FormEvent, useState } from 'react'
 import { useSnapshot } from 'valtio'
+import { getUniqueExerciseCategories } from '../../helpers'
 import { state } from '../../store'
-import { UNITS, Unit, CATEGORIES, Category, Workout } from '../../types'
+import { UNITS, Unit, Category, Workout, Exercise } from '../../types'
 import Modal from '../containers/Modal'
 
 interface Props {
@@ -71,7 +72,7 @@ export default function EditWorkoutModal({
               className="w-full bg-gray-200 rounded-md px-3 py-2"
             >
               <option value="">All</option>
-              {CATEGORIES.map((c) => (
+              {getUniqueExerciseCategories(exercises as Exercise[]).map((c) => (
                 <option key={c} value={c}>
                   {c}
                 </option>

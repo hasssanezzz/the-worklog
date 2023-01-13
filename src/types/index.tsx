@@ -1,5 +1,4 @@
 export const UNITS = ['KG', 'LBS', 'UNIT', 'HOLES', 'SEC']
-export const CATEGORIES = ['Pull', 'Push', 'Leg']
 
 const units = ['KG', 'LBS', 'UNIT', 'HOLES', 'SEC'] as const
 const categories = ['Pull', 'Push', 'Leg'] as const
@@ -10,7 +9,7 @@ export type Category = typeof categories[number]
 export interface Exercise {
   id: string
   name: string
-  category: Category
+  category: string
   img?: string
 }
 

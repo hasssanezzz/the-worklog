@@ -1,18 +1,21 @@
 import { HiOutlineTrash } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 import { useSnapshot } from 'valtio'
+import { getUniqueExerciseCategories } from '../../helpers'
 import { state } from '../../store'
-import { CATEGORIES, Exercise } from '../../types'
+import { Exercise } from '../../types'
 
 function ExerciseCard({ ex }: { ex: Exercise }) {
-
   function handleDeleteClick() {
-    state.exercises = state.exercises.filter(e => e.id !== ex.id)
-    state.workouts = state.workouts.filter(w => w.exId !== ex.id)
+    state.exercises = state.exercises.filter((e) => e.id !== ex.id)
+    state.workouts = state.workouts.filter((w) => w.exId !== ex.id)
   }
 
   return (
-    <Link to={`/exercise/${ex.id}`} className="px-5 py-3 shadow dark:shadow-gray-800 border dark:border-gray-700 rounded-xl block">
+    <Link
+      to={`/exercise/${ex.id}`}
+      className="px-5 py-3 shadow dark:shadow-gray-800 border dark:border-gray-700 rounded-xl block"
+    >
       <div className="flex items-center justify-between gap-5">
         <div>
           <h2 className="font-bold text-xl">{ex.name}</h2>
@@ -37,7 +40,7 @@ export default function ExerciseList() {
 
   return (
     <main className="">
-      {CATEGORIES.map((c) => (
+      {getUniqueExerciseCategories(exercises as Exercise[]).map((c) => (
         <div key={c}>
           <h2 className="font-bold text-2xl my-5">{c}</h2>
 

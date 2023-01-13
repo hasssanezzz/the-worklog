@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { FormEvent, useState } from 'react'
+import { useSnapshot } from 'valtio'
+import { getUniqueExerciseCategories } from '../../helpers'
 import { state } from '../../store'
-import { CATEGORIES, Category } from '../../types'
+import { Exercise } from '../../types'
 import Modal from '../containers/Modal'
 
 interface Props {
@@ -9,8 +12,12 @@ interface Props {
 }
 
 export default function AddExerciseModal({ active, setActive }: Props) {
+  const { exercises } = useSnapshot(state)
+
   const [name, setName] = useState('')
   const [category, setCategory] = useState('')
+  const [customCat, setCustomCat] = useState('')
+
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -18,7 +25,7 @@ export default function AddExerciseModal({ active, setActive }: Props) {
     state.exercises.push({
       id: Date.now().toString(),
       name,
-      category: category as Category,
+      category: (category === 'custom' ? customCat : category),
     })
 
     setName('')
@@ -42,7 +49,8 @@ export default function AddExerciseModal({ active, setActive }: Props) {
                 className="w-full bg-gray-200 rounded-md px-3 py-2"
               >
                 <option value="">Select</option>
-                {CATEGORIES.map((c) => (
+                <option value="custom">Add custom</option>
+                {getUniqueExerciseCategories(exercises as Exercise[]).map((c) => (
                   <option key={c} value={c}>
                     {c}
                   </option>
@@ -50,6 +58,24 @@ export default function AddExerciseModal({ active, setActive }: Props) {
               </select>
             </div>
           </div>
+
+          {category === 'custom' ? (
+            <div className="space-y-2 col-span-2">
+              <label htmlFor="Exercise">Custom category</label>
+              <div>
+                <input
+                  required
+                  type="text"
+                  value={customCat}
+                  onChange={(e) => setCustomCat(e.target.value)}
+                  placeholder="Your custom category..."
+                  className="w-full bg-gray-200 rounded-md px-3 py-2"
+                />
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
 
           <div className="space-y-2 col-span-2">
             <label htmlFor="Exercise">Exercise name</label>

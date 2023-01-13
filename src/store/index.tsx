@@ -18,6 +18,7 @@ const initState = {
     { id: '123', category: 'Pull', name: 'Biceps curl' },
     { id: '124', category: 'Push', name: 'Cable push down' },
     { id: '125', category: 'Push', name: 'Chest press' },
+    { id: '126', category: 'Leg', name: 'Squats' },
   ],
   workouts: [],
 } as State
