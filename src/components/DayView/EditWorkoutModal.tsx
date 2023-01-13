@@ -3,7 +3,7 @@ import { FormEvent, useState } from 'react'
 import { useSnapshot } from 'valtio'
 import { getUniqueExerciseCategories } from '../../helpers'
 import { state } from '../../store'
-import { UNITS, Unit, Category, Workout, Exercise } from '../../types'
+import { UNITS, Unit, Workout, Exercise } from '../../types'
 import Modal from '../containers/Modal'
 
 interface Props {
@@ -68,7 +68,7 @@ export default function EditWorkoutModal({
             <select
               required
               value={exCat}
-              onChange={(e) => setExcat(e.target.value as Category)}
+              onChange={(e) => setExcat(e.target.value)}
               className="w-full bg-gray-200 rounded-md px-3 py-2"
             >
               <option value="">All</option>
