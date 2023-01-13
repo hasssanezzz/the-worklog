@@ -37,10 +37,13 @@ export default function EditWorkoutModal({
   }
 
   function handleRepsChange(index: number, value: number) {
-    const clone: number[] = [...data.weight]
-    clone[index] = value
-    setData({ ...data, reps: clone })
+    if(typeof data.reps === 'object') {
+      const clone: number[] = [...data.reps]
+      clone[index] = value
+      setData({ ...data, reps: clone })
+    } else alert("Bug")
   }
+
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
