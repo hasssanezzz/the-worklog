@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { FormEvent, useState } from 'react'
 import { useSnapshot } from 'valtio'
 import { state } from '../../store'
@@ -11,11 +12,11 @@ interface Props {
 
 export default function AddWorkoutModal({ active, setActive }: Props) {
   const { exercises, selectedDate } = useSnapshot(state)
-  const [exCat, setExcat] = useState<Category>('Push')
+  const [exCat, setExcat] = useState<Category | ''>('')
   const [data, setData] = useState({
     exId: '',
     sets: 3, // (3) x 10
-    reps: 12, // 3 x (10)
+    reps: Array(3).fill(12) as number[], // 3 x (10)
     weight: [1, 1, 1],
     unit: UNITS[0],
   })
@@ -24,6 +25,12 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
     const clone: number[] = [...data.weight]
     clone[index] = value
     setData({ ...data, weight: clone })
+  }
+
+  function handleRepsChange(index: number, value: number) {
+    const clone: number[] = [...data.weight]
+    clone[index] = value
+    setData({ ...data, reps: clone })
   }
 
   function handleSubmit(e: FormEvent) {
@@ -35,14 +42,14 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
       exId: data.exId,
       sets: data.sets,
       reps: data.reps,
-      weight: data.weight,  
+      weight: data.weight,
       unit: data.unit as Unit,
     })
 
     setData({
       exId: '',
       sets: 3, // (3) x 10
-      reps: 12, // 3 x (10)
+      reps: Array(3).fill(12) as number[], // 3 x (10)
       weight: [1, 1, 1],
       unit: UNITS[0],
     })
@@ -55,16 +62,15 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
       <form onSubmit={handleSubmit}>
         <Modal.Header title="Add Workout" />
 
-        <main className="p-5 grid grid-cols-2 space-y-5 gap-x-5">
-          <div className="space-y-2 col-span-2">
-            <label htmlFor="Exercise">Exercise category</label>
+        <main className="p-5 grid grid-cols-2 space-y-3 gap-x-5">
+          <div className="space-y-1 col-span-1">
+            <label htmlFor="">Exercise category</label>
             <select
-              required
               value={exCat}
               onChange={(e) => setExcat(e.target.value as Category)}
               className="w-full bg-gray-200 rounded-md px-3 py-2"
             >
-              <option value="">Select</option>
+              <option value="">All</option>
               {CATEGORIES.map((c) => (
                 <option key={c} value={c}>
                   {c}
@@ -73,8 +79,8 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
             </select>
           </div>
 
-          <div className="space-y-2 col-span-2">
-            <label htmlFor="Exercise">Exercise</label>
+          <div className="space-y-1 col-span-1" style={{ margin: 0 }}>
+            <label htmlFor="">Exercise</label>
             <select
               required
               value={data.exId}
@@ -83,8 +89,8 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
             >
               <option value="">Select</option>
               {exercises
-                .filter(
-                  (ex) => ex.category.toLowerCase() === exCat.toLowerCase()
+                .filter((ex) =>
+                  ex.category.toLowerCase().match(exCat.toLowerCase())
                 )
                 .map((ex) => (
                   <option key={ex.id} value={ex.id}>
@@ -94,8 +100,8 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
             </select>
           </div>
 
-          <div className="space-y-2 col-span-1">
-            <label htmlFor="Exercise">Sets</label>
+          <div className="space-y-1 col-span-2">
+            <label htmlFor="">Sets</label>
             <input
               required
               type="number"
@@ -106,6 +112,7 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
                 setData({
                   ...data,
                   sets: +e.target.value,
+                  reps: Array(+e.target.value).fill(12),
                   weight: Array(+e.target.value).fill(1),
                 })
               }
@@ -114,20 +121,24 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
             />
           </div>
 
-          <div className="space-y-2 col-span-1">
-            <label htmlFor="Exercise">Reps</label>
-            <input
-              required
-              type="number"
-              value={data.reps}
-              onChange={(e) => setData({ ...data, reps: +e.target.value })}
-              placeholder="Reps..."
-              className="w-full bg-gray-200 rounded-md px-3 py-2"
-            />
+          <div className="space-y-1 col-span-2">
+            <label htmlFor="">Reps</label>
+            <div className="flex items-center gap-3">
+              {data.reps.map((set, index) => (
+                <input
+                  required
+                  type="number"
+                  key={index}
+                  value={set}
+                  onChange={(e) => handleRepsChange(index, +e.target.value)}
+                  className="w-full bg-gray-200 rounded-md px-3 py-2"
+                />
+              ))}
+            </div>
           </div>
 
           <div className="space-y-2 col-span-2">
-            <label htmlFor="Exercise">Weight</label>
+            <label htmlFor="">Weight</label>
             <div className="flex items-center gap-3">
               {data.weight.map((set, index) => (
                 <input

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { FormEvent, useState } from 'react'
 import { useSnapshot } from 'valtio'
 import { state } from '../../store'
@@ -17,7 +18,7 @@ export default function EditWorkoutModal({
 }: Props) {
   const { exercises } = useSnapshot(state)
   const [exCat, setExcat] = useState(
-    exercises.find((e) => e.id === workout.exId)?.category
+    exercises.find((e) => e.id === workout.exId)?.category as string
   )
   const [data, setData] = useState({
     exId: workout.exId,
@@ -31,6 +32,12 @@ export default function EditWorkoutModal({
     const clone: number[] = [...data.weight]
     clone[index] = value
     setData({ ...data, weight: clone })
+  }
+
+  function handleRepsChange(index: number, value: number) {
+    const clone: number[] = [...data.weight]
+    clone[index] = value
+    setData({ ...data, reps: clone })
   }
 
   function handleSubmit(e: FormEvent) {
@@ -61,7 +68,7 @@ export default function EditWorkoutModal({
               onChange={(e) => setExcat(e.target.value as Category)}
               className="w-full bg-gray-200 rounded-md px-3 py-2"
             >
-              <option value="">Select</option>
+              <option value="">All</option>
               {CATEGORIES.map((c) => (
                 <option key={c} value={c}>
                   {c}
@@ -79,10 +86,10 @@ export default function EditWorkoutModal({
               className="w-full bg-gray-200 rounded-md px-3 py-2"
             >
               <option value="">Select</option>
-              {/* TODO fix the lowercase pug */}
+              {/* TODO fix the lowercase bug */}
               {exercises
-                .filter(
-                  (ex) => ex.category.toLowerCase() === exCat?.toLowerCase()
+                .filter((ex) =>
+                  ex.category.toLowerCase().match(exCat.toLowerCase())
                 )
                 .map((ex) => (
                   <option key={ex.id} value={ex.id}>
@@ -112,17 +119,36 @@ export default function EditWorkoutModal({
             />
           </div>
 
-          <div className="space-y-2 col-span-1">
-            <label htmlFor="Exercise">Reps</label>
-            <input
-              required
-              type="number"
-              value={data.reps}
-              onChange={(e) => setData({ ...data, reps: +e.target.value })}
-              placeholder="Reps..."
-              className="w-full bg-gray-200 rounded-md px-3 py-2"
-            />
-          </div>
+          {typeof workout.reps === 'number' ? (
+            <div className="space-y-2 col-span-1">
+              <label htmlFor="Exercise">Reps</label>
+              <input
+                required
+                type="number"
+                value={data.reps as number}
+                onChange={(e) => setData({ ...data, reps: +e.target.value })}
+                placeholder="Reps..."
+                className="w-full bg-gray-200 rounded-md px-3 py-2"
+              />
+            </div>
+          ) : (
+            <div className="space-y-1 col-span-2">
+              <label htmlFor="Exercise">Reps</label>
+              <div className="flex items-center gap-3">
+                {typeof data.reps === 'object' &&
+                  data.reps.map((set, index) => (
+                    <input
+                      required
+                      type="number"
+                      key={index}
+                      value={set}
+                      onChange={(e) => handleRepsChange(index, +e.target.value)}
+                      className="w-full bg-gray-200 rounded-md px-3 py-2"
+                    />
+                  ))}
+              </div>
+            </div>
+          )}
 
           <div className="space-y-2 col-span-2">
             <label htmlFor="Exercise">Weight</label>

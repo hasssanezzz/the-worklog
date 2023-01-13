@@ -6,10 +6,15 @@ export default function WeekSlider() {
   const { week } = useSnapshot(state)
 
   return (
-    <div className="flex gap-3 mb-[2rem]">
-      {week.map((date) => (
-        <DayBox key={date.getDate()} date={date} />
-      ))}
+    <div className="mb-[2rem]">
+      <h4 className='font-semibold mb-2 text-sm'>
+        {week[0].getMonth() + 1}/{week[0].getFullYear()}
+      </h4>
+      <div className="flex gap-3 ">
+        {week.map((date) => (
+          <DayBox key={date.getDate()} date={date} />
+        ))}
+      </div>
     </div>
   )
 }

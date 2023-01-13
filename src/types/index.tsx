@@ -1,7 +1,7 @@
-export const UNITS = ['KG', 'LBS', 'UNIT', 'HOLES']
+export const UNITS = ['KG', 'LBS', 'UNIT', 'HOLES', 'SEC']
 export const CATEGORIES = ['Pull', 'Push', 'Leg']
 
-const units = ['KG', 'LBS', 'UNIT', 'HOLES'] as const
+const units = ['KG', 'LBS', 'UNIT', 'HOLES', 'SEC'] as const
 const categories = ['Pull', 'Push', 'Leg'] as const
 
 export type Unit = typeof units[number]
@@ -20,7 +20,7 @@ export interface Workout {
   time: Date
   exId: string
   sets: number
-  reps: number
+  reps: number[] | number
   weight: number[]
   unit: Unit
 }

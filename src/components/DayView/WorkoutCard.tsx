@@ -56,7 +56,7 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
             key={index}
             className="p-2 text-center bg-white rounded-2xl flex-auto text-black font-bold dark:bg-gray-900 dark:text-white dark:shadow dark:shadow-gray-700"
           >
-            {set} {workout.unit} x {workout.reps}
+            {set} {workout.unit} x {typeof workout.reps === 'object' ? workout.reps[index] : workout.reps}
           </div>
         ))}
       </div>

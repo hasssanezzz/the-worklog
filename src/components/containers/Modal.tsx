@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect } from 'react'
 import Conatiner from './Container'
 
@@ -33,8 +34,8 @@ function Modal({ children, active, setActive }: Props) {
   }
 
   useEffect(() => {
-    if (active) document.querySelector('body')?.classList.add('overflow-hidden')
-    else document.querySelector('body')?.classList.remove('overflow-hidden')
+    if (active) document.querySelector('body')?.classList.add('scroll-hidden')
+    else document.querySelector('body')?.classList.remove('scroll-hidden')
   }, [active])
 
   return (
@@ -46,7 +47,7 @@ function Modal({ children, active, setActive }: Props) {
     >
       <Conatiner>
         <div
-          className={`bg-white rounded-xl rounded-t-none transition-all duration-500 ${
+          className={`bg-white rounded-xl rounded-t-none overflow-auto max-h-[95vh] transition-all duration-500 ${
             active ? 'mt-0' : '-mt-[100vh]'
           }`}
         >
