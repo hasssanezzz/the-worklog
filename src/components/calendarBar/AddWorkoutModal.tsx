@@ -35,7 +35,7 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
-    state.workouts.push({
+    state.workouts.unshift({
       id: Date.now().toString(),
       date: selectedDate,
       time: new Date(),
