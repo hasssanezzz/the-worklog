@@ -26,6 +26,7 @@ export default function EditWorkoutModal({
     reps: workout.reps, // 3 x (10)
     weight: workout.weight,
     unit: workout.unit,
+    note: '',
   })
 
   function handleWeightChange(index: number, value: number) {
@@ -50,6 +51,7 @@ export default function EditWorkoutModal({
     state.workouts[index].reps = data.reps
     state.workouts[index].weight = data.weight
     state.workouts[index].unit = data.unit
+    state.workouts[index].note = data.note
 
     setActive(false)
   }
@@ -179,6 +181,18 @@ export default function EditWorkoutModal({
                 </option>
               ))}
             </select>
+          </div>
+
+          <div className="space-y-2 col-span-2">
+            <label htmlFor="">Notes</label>
+            <div className="flex items-center gap-3">
+              <textarea
+                value={data.note}
+                onChange={(e) => setData({ ...data, note: e.target.value })}
+                placeholder="Add some notes...."
+                className="w-full bg-gray-200 rounded-md px-3 py-2"
+              ></textarea>
+            </div>
           </div>
         </main>
 

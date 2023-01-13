@@ -50,6 +50,10 @@ export default function WorkoutCard({ w: workout }: { w: Workout }) {
         </div>
       </div>
 
+      <div className='my-3 text-gray-500'>
+        <p>{workout?.note}</p>
+      </div>
+
       <div className="mt-5 flex items-center gap-3">
         {workout.weight.map((set, index) => (
           <div

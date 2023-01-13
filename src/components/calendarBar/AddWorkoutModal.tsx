@@ -19,6 +19,7 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
     reps: Array(3).fill(12) as number[], // 3 x (10)
     weight: [1, 1, 1],
     unit: UNITS[0],
+    note: '',
   })
 
   function handleWeightChange(index: number, value: number) {
@@ -44,6 +45,7 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
       reps: data.reps,
       weight: data.weight,
       unit: data.unit as Unit,
+      note: data.note
     })
 
     setData({
@@ -52,6 +54,7 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
       reps: Array(3).fill(12) as number[], // 3 x (10)
       weight: [1, 1, 1],
       unit: UNITS[0],
+      note: '',
     })
 
     setActive(false)
@@ -164,6 +167,18 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
                 </option>
               ))}
             </select>
+          </div>
+
+          <div className="space-y-2 col-span-2">
+            <label htmlFor="">Notes</label>
+            <div className="flex items-center gap-3">
+              <textarea
+                value={data.note}
+                onChange={(e) => setData({ ...data, note: e.target.value })}
+                placeholder="Add some notes...."
+                className="w-full bg-gray-200 rounded-md px-3 py-2"
+              ></textarea>
+            </div>
           </div>
         </main>
 

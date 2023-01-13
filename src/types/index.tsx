@@ -23,4 +23,5 @@ export interface Workout {
   reps: number[] | number
   weight: number[]
   unit: Unit
+  note?: string
 }
