@@ -3,7 +3,7 @@ import { FormEvent, useState } from 'react'
 import { useSnapshot } from 'valtio'
 import { getUniqueExerciseCategories } from '../../helpers'
 import { state } from '../../store'
-import { UNITS, Unit, Category, Exercise } from '../../types'
+import { UNITS, Unit, Exercise } from '../../types'
 import Modal from '../containers/Modal'
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 
 export default function AddWorkoutModal({ active, setActive }: Props) {
   const { exercises, selectedDate } = useSnapshot(state)
-  const [exCat, setExcat] = useState<Category | ''>('')
+  const [exCat, setExcat] = useState('')
   const [data, setData] = useState({
     exId: '',
     sets: 3, // (3) x 10
@@ -71,7 +71,7 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
             <label htmlFor="">Exercise category</label>
             <select
               value={exCat}
-              onChange={(e) => setExcat(e.target.value as Category)}
+              onChange={(e) => setExcat(e.target.value)}
               className="w-full bg-gray-200 rounded-md px-3 py-2"
             >
               <option value="">All</option>
