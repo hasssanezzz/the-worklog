@@ -28,7 +28,7 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
   }
 
   function handleRepsChange(index: number, value: number) {
-    const clone: number[] = [...data.weight]
+    const clone: number[] = [...data.reps]
     clone[index] = value
     setData({ ...data, reps: clone })
   }
@@ -124,12 +124,12 @@ export default function AddWorkoutModal({ active, setActive }: Props) {
           <div className="space-y-1 col-span-2">
             <label htmlFor="">Reps</label>
             <div className="flex items-center gap-3">
-              {data.reps.map((set, index) => (
+              {data.reps.map((rep, index) => (
                 <input
+                  key={index}
                   required
                   type="number"
-                  key={index}
-                  value={set}
+                  value={rep}
                   onChange={(e) => handleRepsChange(index, +e.target.value)}
                   className="w-full bg-gray-200 rounded-md px-3 py-2"
                 />
