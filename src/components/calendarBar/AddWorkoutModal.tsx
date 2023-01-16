@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import { FormEvent, useState } from 'react'
 import { useSnapshot } from 'valtio'
 import { getUniqueExerciseCategories } from '../../helpers'

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 interface Props {
   dataLength: number
   slicedDataLength: number

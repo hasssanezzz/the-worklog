@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect } from 'react'
 import Conatiner from './Container'
 
@@ -29,6 +28,7 @@ function Footer({
 }
 
 function Modal({ children, active, setActive }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function handleClick(e: React.MouseEvent<HTMLDivElement, MouseEvent> | any) {
     e.target.classList.contains('fixed') && setActive(false)
   }

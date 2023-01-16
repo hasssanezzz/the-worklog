@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 export default function Checkbox({
   checked,
   setChecked,
