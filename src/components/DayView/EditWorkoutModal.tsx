@@ -26,7 +26,7 @@ export default function EditWorkoutModal({
     reps: workout.reps, // 3 x (10)
     weight: workout.weight,
     unit: workout.unit,
-    note: '',
+    note: workout.note,
   })
 
   function handleWeightChange(index: number, value: number) {
