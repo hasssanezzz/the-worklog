@@ -29,7 +29,7 @@ export default function DayBox({ date }: { date: Date }) {
       </div>
 
       <div className="absolute top-[55px] flex items-center gap-1">
-        {selectedWorkouts.length ? <span className='text-[10px] font-bold'>{selectedWorkouts.length}</span> : ''}
+        {selectedWorkouts.length ? <span className='text-[10px] font-bold dark:text-white text-black'>{selectedWorkouts.length}</span> : ''}
       </div>
     </button>
   )

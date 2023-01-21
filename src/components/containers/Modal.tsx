@@ -44,10 +44,11 @@ function Modal({ children, active, setActive }: Props) {
       className={`fixed top-0 left-0 w-full h-screen bg-black/40 text-black flex items-start justify-center pb-5 transition-all duration-500 ${
         active ? 'opacity-100' : 'opacity-0 pointer-events-none'
       } overflow-hidden`}
+      style={{ margin: 0 }}
     >
       <Conatiner>
         <div
-          className={`bg-white rounded-xl rounded-t-none overflow-auto max-h-[95vh] transition-all duration-500 ${
+          className={`bg-white rounded-xl rounded-t-none overflow-auto max-h-[85vh] transition-all duration-500 ${
             active ? 'mt-0' : '-mt-[100vh]'
           }`}
         >

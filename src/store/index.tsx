@@ -2,7 +2,7 @@ import { proxy, subscribe } from 'valtio'
 import { datesOfweek, dateTimeReviver } from '../helpers'
 import { Exercise, Workout } from '../types'
 
-interface State {
+export interface State {
   dark: boolean
   selectedDate: Date
   week: Date[]
