@@ -35,7 +35,7 @@ export default function AddExerciseModal({ active, setActive }: Props) {
   return (
     <Modal active={active} setActive={setActive}>
       <form onSubmit={handleSubmit}>
-        <Modal.Header title="Add Workout" />
+        <Modal.Header title="Add Exercise" />
 
         <main className="p-5 grid grid-cols-2 space-y-5 gap-x-5">
           <div className="space-y-2 col-span-2">
