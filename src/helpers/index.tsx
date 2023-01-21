@@ -3,7 +3,7 @@ import { Exercise } from "../types"
 export function datesOfweek(current = new Date()): Date[] {
   const week: Date[] = []
 
-  current.setDate(current.getDate() - current.getDay() - 1)
+  // current.setDate(current.getDate() - current.getDay() - 1) // for now
 
   for (let i = 0; i < 7; i++) {
     week.push(new Date(current))
