@@ -49,6 +49,7 @@ export default function WeekSliderFooter() {
   function currWeek() {
     state.week = datesOfweek()
     lastDate = new Date()
+    state.selectedDate = new Date()
   }
 
   return (

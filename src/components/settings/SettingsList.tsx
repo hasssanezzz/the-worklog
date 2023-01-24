@@ -9,22 +9,17 @@ import {
 import Checkbox from '../Checkbox'
 import { state } from '../../store'
 import ExportDataModal from './ExportDataModal'
-// import ImportDataModal from './ImportDataModal' // remove for now
 
 export default function SettingsList() {
   const { dark } = useSnapshot(state)
   const [isExportDataModalActive, setIsExportDataModalActive] = useState(false)
-  // const [isImportDataModalActive, setIsImportDataModalActive] = useState(false) // remove for now
 
   return (
     <div className="space-y-8">
       <main>
         <p className="font-bold mb-3">App data</p>
         <div className="border-t border-b dark:border-gray-700 dark:divide-gray-700 divide-y-[1px]">
-          <button
-            // onClick={() => setIsImportDataModalActive(true)} // remove for now
-            className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 dark:hover:bg-gray-800 trns"
-          >
+          <button className="flex items-center gap-3 px-3 py-2 w-full hover:bg-gray-50 dark:hover:bg-gray-800 trns">
             <span>
               <HiOutlineArrowDownOnSquareStack size={25} />
             </span>
@@ -46,12 +41,6 @@ export default function SettingsList() {
         active={isExportDataModalActive}
         setActive={setIsExportDataModalActive}
       />
-
-      {/* removed for now */}
-      {/* <ImportDataModal
-        active={isImportDataModalActive}
-        setActive={setIsImportDataModalActive}
-      /> */}
 
       <main>
         <p className="font-bold mb-3">Appearance</p>

@@ -3,7 +3,7 @@ import { Exercise } from "../types"
 export function datesOfweek(current = new Date()): Date[] {
   const week: Date[] = []
 
-  // current.setDate(current.getDate() - current.getDay() - 1) // for now
+  current.setDate(current.getDate() - current.getDay() - 1)
 
   for (let i = 0; i < 7; i++) {
     week.push(new Date(current))
@@ -17,6 +17,7 @@ export function getUniqueExerciseCategories(exercises: Exercise[]) {
   return [...new Set(exercises.map(ex => ex.category))]
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function dateTimeReviver(key: string, value: any) {
   if (typeof value === 'string') {
     const a =
