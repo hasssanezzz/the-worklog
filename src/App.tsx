@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { useSnapshot } from 'valtio'
 
 // Pages and components
@@ -19,7 +19,7 @@ export default function App() {
   }, [dark])
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -27,6 +27,6 @@ export default function App() {
         <Route path="/exercise/:id" element={<ExerciseComponent />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
