@@ -13,11 +13,11 @@ export default function Stats({ data }: { data: Workout[] }) {
         </span>
       </li>
       <li className="flex items-center justify-between px-3 py-2">
-        <span className="font-semibold mr-2">Min hit:</span>
+        <span className="font-semibold mr-2">Max hit:</span>
         <span>{data.length ? Math.max(...data.map((w) => Math.max(...w.weight))) : 0}</span>
       </li>
       <li className="flex items-center justify-between px-3 py-2">
-        <span className="font-semibold mr-2">Max hit:</span>
+        <span className="font-semibold mr-2">Min hit:</span>
         <span>{data.length ? Math.min(...data.map((w) => Math.max(...w.weight))) : 0}</span>
       </li>
     </ul>
